@@ -1,0 +1,10 @@
+[package]
+name = "love_fetters"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+actix-files = "0.6"
+actix-web = "4"
+pulldown-cmark = "0.9.2"
+sailfish = "0.4"
