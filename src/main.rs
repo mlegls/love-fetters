@@ -64,7 +64,7 @@ async fn letter(letter: web::Path<String>) -> impl Responder {
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     let port = std::env::var("PORT")
-    .unwrap_or_else(|_| "3000".to_string())
+    .unwrap_or_else(|_| "8000".to_string())
     .parse()
     .expect("PORT must be a number");
 
