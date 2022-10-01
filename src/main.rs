@@ -29,7 +29,7 @@ async fn index() -> impl Responder {
             file.ok().and_then(|f| 
                 f.path().file_name()
                 .and_then(|n| n.to_str().map(|s| {
-                    let [date, author, _]: [&str; 3] = s.split("_").collect::<Vec<&str>>().try_into().unwrap();
+                    let [_, date, author]: [&str; 3] = s.split("_").collect::<Vec<&str>>().try_into().unwrap();
                     Letter {
                         date: date.to_string(),
                         author: author.to_string(),
@@ -49,7 +49,7 @@ async fn letter(letter: web::Path<String>) -> impl Responder {
     let mut html_output = String::new();
     pulldown_cmark::html::push_html(&mut html_output, parser);
 
-    let [date, author, _]: [&str; 3] = letter.split("_").collect::<Vec<&str>>().try_into().unwrap();
+    let [_, date, author]: [&str; 3] = letter.split("_").collect::<Vec<&str>>().try_into().unwrap();
     let ctx = LetterTemplate {
         info: Letter {
             date: date.to_string(),
